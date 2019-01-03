@@ -8,6 +8,7 @@ class Link extends Model
 {
     protected $table = 'links';
     protected $visible = ['title', 'url'];
+    protected $fillable = ['title', 'url'];
     public $timestamps = false;
 
     public function meal()
