@@ -11,6 +11,8 @@
 |
 */
 
+$router->get('/mobile-version/android', 'MobileAppVersionController@android');
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
