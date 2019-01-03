@@ -14,6 +14,7 @@ class Meal extends Model
         'updated_at' => 'int',
     ];
     protected $visible = ['id', 'name', 'image', 'rating', 'links', 'created_at'];
+    protected $fillable = ['name', 'image', 'rating', 'links'];
 
     public function links()
     {
