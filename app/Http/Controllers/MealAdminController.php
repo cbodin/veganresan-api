@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Link;
 use App\Models\Meal;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;
@@ -26,5 +27,23 @@ class MealAdminController extends Controller
         return Meal::create($request->input() + [
                 'image' => "$imageFolder/$imageName",
             ]);
+    }
+
+    public function createLink(Request $request)
+    {
+        $this->validate($request, [
+            'post_id' => 'required|integer|exists:meals,id',
+            'title' => 'required',
+            'url' => 'required|url',
+        ]);
+
+        /* @var $meal Meal */
+        $meal = Meal::find($request->input('post_id'));
+
+        $link = new Link();
+        $link->fill($request->input());
+        $meal->links()->save($link);
+
+        return $link;
     }
 }
