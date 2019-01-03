@@ -13,6 +13,10 @@ class Meal extends Model
         'created_at' => 'int',
         'updated_at' => 'int',
     ];
-    protected $visible = ['id', 'name', 'image', 'rating', 'created_at'];
+    protected $visible = ['id', 'name', 'image', 'rating', 'links', 'created_at'];
 
+    public function links()
+    {
+        return $this->hasMany('App\Models\Link');
+    }
 }
