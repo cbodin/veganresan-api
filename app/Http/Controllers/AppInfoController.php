@@ -40,6 +40,7 @@ class AppInfoController extends Controller
         return [
             'latest_version' => $latestVersion,
             'is_latest' => $latestVersion === $version,
+            'download_url' => url("releases/veganresan-$latestVersion.apk"),
             'news' => $news,
         ];
     }
