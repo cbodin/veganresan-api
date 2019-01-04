@@ -8,7 +8,7 @@ class AppInfoController extends Controller
 {
     public function version($platform, $version)
     {
-        $path = base_path('app-versions.json');
+        $path = storage_path('app/app-versions.json');
         $apps = json_decode(file_get_contents($path));
 
         // Validate platform
