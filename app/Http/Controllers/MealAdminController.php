@@ -20,11 +20,11 @@ class MealAdminController extends Controller
         ]);
 
         // Save image
-        $imageFolder = 'public/images';
+        $imageFolder = 'images';
         $imageName = uniqid('meal-') . '.jpeg';
 
         $image = $request->file('image');
-        $image->move(storage_path($imageFolder), $imageName);
+        $image->move(storage_path('app/public/' . $imageFolder), $imageName);
 
         return Meal::create($request->input() + [
                 'image' => "$imageFolder/$imageName",

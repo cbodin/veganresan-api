@@ -27,6 +27,6 @@ class Meal extends Model
 
     public function getImageUrlAttribute()
     {
-        return url($this->image);
+        return url('storage/' . $this->image);
     }
 }
