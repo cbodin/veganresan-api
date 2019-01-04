@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Link;
 use App\Models\Meal;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Laravel\Lumen\Routing\Controller;
 
 class MealAdminController extends Controller
@@ -13,6 +14,7 @@ class MealAdminController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'type' => ['required', Rule::in([Meal::TYPE_HOMEMADE, Meal::TYPE_RESTAURANT])],
             'image' => 'required|file|mimes:jpeg',
             'rating' => 'required|integer|between:1,5',
         ]);

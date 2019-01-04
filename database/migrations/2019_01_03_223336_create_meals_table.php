@@ -17,6 +17,7 @@ class CreateMealsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('image');
+            $table->enum('type', ['homemade', 'restaurant']);
             $table->tinyInteger('rating');
             $table->timestamps();
         });

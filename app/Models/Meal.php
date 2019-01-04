@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meal extends Model
 {
+    public const TYPE_HOMEMADE = 'homemade';
+    public const TYPE_RESTAURANT = 'restaurant';
+
     protected $table = 'meals';
     protected $dateFormat = 'U';
     protected $casts = [
@@ -13,8 +16,8 @@ class Meal extends Model
         'created_at' => 'int',
         'updated_at' => 'int',
     ];
-    protected $visible = ['id', 'name', 'image_url', 'rating', 'links', 'created_at'];
-    protected $fillable = ['name', 'image', 'rating', 'links'];
+    protected $visible = ['id', 'name', 'type', 'image_url', 'rating', 'links', 'created_at'];
+    protected $fillable = ['name', 'type', 'image', 'rating', 'links'];
     protected $appends = ['image_url'];
 
     public function links()
