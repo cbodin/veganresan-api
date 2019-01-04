@@ -15,7 +15,7 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($request->bearerToken() !== env('ADMIN_PASSWORD')) {
+        if ($request->bearerToken() !== env('ADMIN_BEARER_TOKEN')) {
             return response('Unauthorized.', 401);
         }
 
