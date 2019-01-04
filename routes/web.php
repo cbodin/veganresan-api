@@ -3,7 +3,7 @@
 use Laravel\Lumen\Routing\Router;
 
 /* @var $router Router */
-$router->get('/mobile-version/android', 'MobileAppVersionController@android');
+$router->get('/app-info/{platform}-{version}', 'AppInfoController@version');
 $router->get('/meal/list', 'MealController@list');
 
 $router->group(['middleware' => 'auth'], function (Router $router) {
