@@ -14,16 +14,16 @@ class Meal extends Model
     protected $casts = [
         'rating' => 'int',
     ];
-    protected $visible = ['id', 'name', 'type', 'image_url', 'rating', 'links', 'published'];
+    protected $visible = ['id', 'name', 'type', 'photo', 'rating', 'links', 'published'];
     protected $fillable = ['name', 'type', 'image', 'rating', 'links'];
-    protected $appends = ['image_url', 'published'];
+    protected $appends = ['photo', 'published'];
 
     public function links()
     {
         return $this->hasMany('App\Models\Link');
     }
 
-    public function getImageUrlAttribute()
+    public function getPhotoAttribute()
     {
         return url('storage/' . $this->image);
     }
