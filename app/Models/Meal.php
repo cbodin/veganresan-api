@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Meal extends Model
 {
-    public const TYPE_HOMEMADE = 'homemade';
-    public const TYPE_RESTAURANT = 'restaurant';
+    public const TYPE_HOMEMADE = 'HOMEMADE';
+    public const TYPE_RESTAURANT = 'RESTAURANT';
 
     protected $table = 'meals';
     protected $dateFormat = 'U';
