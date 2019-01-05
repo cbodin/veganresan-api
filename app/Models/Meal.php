@@ -13,12 +13,10 @@ class Meal extends Model
     protected $dateFormat = 'U';
     protected $casts = [
         'rating' => 'int',
-        'created_at' => 'int',
-        'updated_at' => 'int',
     ];
-    protected $visible = ['id', 'name', 'type', 'image_url', 'rating', 'links', 'created_at'];
+    protected $visible = ['id', 'name', 'type', 'image_url', 'rating', 'links', 'published'];
     protected $fillable = ['name', 'type', 'image', 'rating', 'links'];
-    protected $appends = ['image_url'];
+    protected $appends = ['image_url', 'published'];
 
     public function links()
     {
@@ -28,5 +26,10 @@ class Meal extends Model
     public function getImageUrlAttribute()
     {
         return url('storage/' . $this->image);
+    }
+
+    public function getPublishedAttribute()
+    {
+        return $this->created_at->format('c');
     }
 }
