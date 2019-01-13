@@ -29,7 +29,7 @@ class AppInfoController extends Controller
                 break;
             }
 
-            $news[] = $versionData;
+            $news = array_merge($news, $versionData->news);
         }
 
         // If we're not on any specified version, abort
