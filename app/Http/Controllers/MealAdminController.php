@@ -26,9 +26,12 @@ class MealAdminController extends Controller
         $image = $request->file('image');
         $image->move(storage_path('app/public/' . $imageFolder), $imageName);
 
-        return Meal::create($request->input() + [
+        /** @var Meal $meal */
+        $meal = Meal::create($request->input() + [
                 'image' => "$imageFolder/$imageName",
             ]);
+
+        return $meal->load('links');
     }
 
     public function createLink(Request $request)
