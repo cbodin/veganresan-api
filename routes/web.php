@@ -3,6 +3,11 @@
 use Laravel\Lumen\Routing\Router;
 
 /* @var $router Router */
+
+/** Web routes */
+$router->get('/download', 'DownloadController@download');
+
+/** API Routes */
 $router->get('/app-info/{platform}-{version}', 'AppInfoController@version');
 $router->get('/meal/list', 'MealController@list');
 

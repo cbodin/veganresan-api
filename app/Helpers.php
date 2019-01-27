@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 class Helpers
@@ -14,5 +15,20 @@ class Helpers
         }
 
         return $apps->{$platform};
+    }
+
+    public static function getLatestVersion($platform)
+    {
+        $versions = self::getAppVersions($platform);
+        if (!$versions || !sizeof($versions)) {
+            return null;
+        }
+
+        return $versions[0];
+    }
+
+    public static function getAndroidApkDownloadUrl($version)
+    {
+        return url("storage/releases/veganresan-$version.apk");
     }
 }
