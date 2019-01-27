@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers;
 use Laravel\Lumen\Routing\Controller;
 
 class AppInfoController extends Controller
 {
     public function version($platform, $version)
     {
-        $path = storage_path('app/app-versions.json');
-        $apps = json_decode(file_get_contents($path));
-
-        // Validate platform
-        if (!isset($apps->{$platform})) {
+        $versions = Helpers::getAppVersions($platform);
+        if (!$versions) {
             return response('', 404);
         }
 
         // Grab news and latest version
-        $versions = $apps->{$platform};
         $latestVersion = null;
         $news = [];
         $match = false;
